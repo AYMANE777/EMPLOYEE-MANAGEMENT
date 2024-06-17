@@ -1,0 +1,905 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="RADEETA_DATABASEModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AGENT">
+          <Key>
+            <PropertyRef Name="ID_AGENT" />
+          </Key>
+          <Property Name="ID_AGENT" Type="int" Nullable="false" />
+          <Property Name="NOM" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Prenom" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="CIN" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="TELEPHONE" Type="varchar" MaxLength="40" Nullable="false" />
+          <Property Name="EMAIL" Type="varchar" MaxLength="40" Nullable="false" />
+          <Property Name="Date_Ajout" Type="date" Nullable="false" />
+          <Property Name="TYPE" Type="varchar" MaxLength="10" />
+          <Property Name="PHOTO" Type="varchar" MaxLength="200" />
+          <Property Name="ID_SERVICE" Type="int" Nullable="false" />
+          <Property Name="ADRESSE" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="PASSWORD" Type="varchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <EntityType Name="BON_CARBURANT">
+          <Key>
+            <PropertyRef Name="ID_BON" />
+            <PropertyRef Name="ID_CARBURANT" />
+          </Key>
+          <Property Name="ID_BON" Type="int" Nullable="false" />
+          <Property Name="ID_CARBURANT" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="BON_PLEIN">
+          <Key>
+            <PropertyRef Name="ID_BON" />
+          </Key>
+          <Property Name="ID_BON" Type="int" Nullable="false" />
+          <Property Name="DATE_BON" Type="date" Nullable="false" />
+          <Property Name="PRIX_LITRE" Type="money" Nullable="false" />
+          <Property Name="NBR_LITRE" Type="float" Nullable="false" />
+          <Property Name="KILOMETRAGE" Type="float" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CARBURANT">
+          <Key>
+            <PropertyRef Name="ID_CARBURANT" />
+          </Key>
+          <Property Name="ID_CARBURANT" Type="int" Nullable="false" />
+          <Property Name="TYPE_CARBURANT" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="DATE_ADD_CARBURANT" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CATEGORIE">
+          <Key>
+            <PropertyRef Name="ID_CATEGORIE" />
+          </Key>
+          <Property Name="ID_CATEGORIE" Type="int" Nullable="false" />
+          <Property Name="LIB_CATEGORIE" Type="varchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DETAIL_MISSION">
+          <Key>
+            <PropertyRef Name="ID_MISSION" />
+            <PropertyRef Name="ID_AGENT" />
+            <PropertyRef Name="ID_VEHICULE" />
+            <PropertyRef Name="DATE" />
+          </Key>
+          <Property Name="ID_MISSION" Type="int" Nullable="false" />
+          <Property Name="ID_AGENT" Type="int" Nullable="false" />
+          <Property Name="ID_VEHICULE" Type="int" Nullable="false" />
+          <Property Name="DATE" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="LOGIN">
+          <Key>
+            <PropertyRef Name="Username" />
+          </Key>
+          <Property Name="Username" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="PASS" Type="varchar" MaxLength="60" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MISSION">
+          <Key>
+            <PropertyRef Name="ID_MISSION" />
+          </Key>
+          <Property Name="ID_MISSION" Type="int" Nullable="false" />
+          <Property Name="OBJET" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="DATE_DEBUT" Type="date" Nullable="false" />
+          <Property Name="DATE_FIN" Type="date" Nullable="false" />
+          <Property Name="LIEU" Type="varchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MODELE">
+          <Key>
+            <PropertyRef Name="ID_MODELE" />
+          </Key>
+          <Property Name="ID_MODELE" Type="int" Nullable="false" />
+          <Property Name="MARQUE" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="LIBELLER_MODEL" Type="varchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PANNE">
+          <Key>
+            <PropertyRef Name="ID_PANNE" />
+          </Key>
+          <Property Name="ID_PANNE" Type="int" Nullable="false" />
+          <Property Name="DATE_PANNE" Type="date" Nullable="false" />
+          <Property Name="ID_VEHICULE" Type="int" Nullable="false" />
+          <Property Name="DETAIL_PANNE" Type="varchar" MaxLength="60" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PROPRIETAIRE">
+          <Key>
+            <PropertyRef Name="ID_PROPRIETAIRE" />
+          </Key>
+          <Property Name="ID_PROPRIETAIRE" Type="int" Nullable="false" />
+          <Property Name="INTITULER" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="ADRESSE" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="TELEPHONE" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="EMAIL" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="REPARATION">
+          <Key>
+            <PropertyRef Name="N_REPARATION" />
+          </Key>
+          <Property Name="N_REPARATION" Type="int" Nullable="false" />
+          <Property Name="DATE_DEBUT_REPARATION" Type="date" Nullable="false" />
+          <Property Name="DATE_FIN_REPARATION" Type="date" Nullable="false" />
+          <Property Name="PRIX" Type="money" Nullable="false" />
+          <Property Name="PORTER" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="ID_PANNE" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SERVICES">
+          <Key>
+            <PropertyRef Name="ID_SERVICE" />
+          </Key>
+          <Property Name="ID_SERVICE" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NOM_SERVICE" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="DESCRIPTION" Type="varchar" MaxLength="60" Nullable="false" />
+        </EntityType>
+        <EntityType Name="VEHICULE">
+          <Key>
+            <PropertyRef Name="ID_VEHICULE" />
+          </Key>
+          <Property Name="ID_VEHICULE" Type="int" Nullable="false" />
+          <Property Name="IMATRUCULATION" Type="nvarchar" MaxLength="40" Nullable="false" />
+          <Property Name="MATRICULE" Type="varchar" MaxLength="40" Nullable="false" />
+          <Property Name="ID_MODELE" Type="int" Nullable="false" />
+          <Property Name="ID_CATEGORIE" Type="int" Nullable="false" />
+          <Property Name="ID_CARBURANT" Type="int" Nullable="false" />
+          <Property Name="ID_PROPRIETAIRE" Type="int" Nullable="false" />
+          <Property Name="DATE_DEBUT" Type="date" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__AGENT__ID_SERVIC__48CFD27E">
+          <End Role="SERVICES" Type="Self.SERVICES" Multiplicity="1" />
+          <End Role="AGENT" Type="Self.AGENT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SERVICES">
+              <PropertyRef Name="ID_SERVICE" />
+            </Principal>
+            <Dependent Role="AGENT">
+              <PropertyRef Name="ID_SERVICE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__BON_CARBU__ID_CA__3A81B327">
+          <End Role="CARBURANT" Type="Self.CARBURANT" Multiplicity="1" />
+          <End Role="BON_CARBURANT" Type="Self.BON_CARBURANT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CARBURANT">
+              <PropertyRef Name="ID_CARBURANT" />
+            </Principal>
+            <Dependent Role="BON_CARBURANT">
+              <PropertyRef Name="ID_CARBURANT" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DETAIL_MI__ID_AG__5441852A">
+          <End Role="AGENT" Type="Self.AGENT" Multiplicity="1" />
+          <End Role="DETAIL_MISSION" Type="Self.DETAIL_MISSION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AGENT">
+              <PropertyRef Name="ID_AGENT" />
+            </Principal>
+            <Dependent Role="DETAIL_MISSION">
+              <PropertyRef Name="ID_AGENT" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DETAIL_MI__ID_MI__534D60F1">
+          <End Role="MISSION" Type="Self.MISSION" Multiplicity="1" />
+          <End Role="DETAIL_MISSION" Type="Self.DETAIL_MISSION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MISSION">
+              <PropertyRef Name="ID_MISSION" />
+            </Principal>
+            <Dependent Role="DETAIL_MISSION">
+              <PropertyRef Name="ID_MISSION" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DETAIL_MI__ID_VE__5535A963">
+          <End Role="VEHICULE" Type="Self.VEHICULE" Multiplicity="1" />
+          <End Role="DETAIL_MISSION" Type="Self.DETAIL_MISSION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VEHICULE">
+              <PropertyRef Name="ID_VEHICULE" />
+            </Principal>
+            <Dependent Role="DETAIL_MISSION">
+              <PropertyRef Name="ID_VEHICULE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PANNE__ID_VEHICU__59063A47">
+          <End Role="VEHICULE" Type="Self.VEHICULE" Multiplicity="1" />
+          <End Role="PANNE" Type="Self.PANNE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VEHICULE">
+              <PropertyRef Name="ID_VEHICULE" />
+            </Principal>
+            <Dependent Role="PANNE">
+              <PropertyRef Name="ID_VEHICULE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__REPARATIO__ID_PA__5BE2A6F2">
+          <End Role="PANNE" Type="Self.PANNE" Multiplicity="1" />
+          <End Role="REPARATION" Type="Self.REPARATION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PANNE">
+              <PropertyRef Name="ID_PANNE" />
+            </Principal>
+            <Dependent Role="REPARATION">
+              <PropertyRef Name="ID_PANNE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__VEHICULE__ID_CAR__4D94879B">
+          <End Role="CARBURANT" Type="Self.CARBURANT" Multiplicity="1" />
+          <End Role="VEHICULE" Type="Self.VEHICULE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CARBURANT">
+              <PropertyRef Name="ID_CARBURANT" />
+            </Principal>
+            <Dependent Role="VEHICULE">
+              <PropertyRef Name="ID_CARBURANT" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__VEHICULE__ID_CAT__4CA06362">
+          <End Role="CATEGORIE" Type="Self.CATEGORIE" Multiplicity="1" />
+          <End Role="VEHICULE" Type="Self.VEHICULE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CATEGORIE">
+              <PropertyRef Name="ID_CATEGORIE" />
+            </Principal>
+            <Dependent Role="VEHICULE">
+              <PropertyRef Name="ID_CATEGORIE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__VEHICULE__ID_MOD__4BAC3F29">
+          <End Role="MODELE" Type="Self.MODELE" Multiplicity="1" />
+          <End Role="VEHICULE" Type="Self.VEHICULE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MODELE">
+              <PropertyRef Name="ID_MODELE" />
+            </Principal>
+            <Dependent Role="VEHICULE">
+              <PropertyRef Name="ID_MODELE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__VEHICULE__ID_PRO__4E88ABD4">
+          <End Role="PROPRIETAIRE" Type="Self.PROPRIETAIRE" Multiplicity="1" />
+          <End Role="VEHICULE" Type="Self.VEHICULE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PROPRIETAIRE">
+              <PropertyRef Name="ID_PROPRIETAIRE" />
+            </Principal>
+            <Dependent Role="VEHICULE">
+              <PropertyRef Name="ID_PROPRIETAIRE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BON_PLEIN">
+          <End Role="BON_PLEIN" Type="Self.BON_PLEIN" Multiplicity="1" />
+          <End Role="BON_CARBURANT" Type="Self.BON_CARBURANT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BON_PLEIN">
+              <PropertyRef Name="ID_BON" />
+            </Principal>
+            <Dependent Role="BON_CARBURANT">
+              <PropertyRef Name="ID_BON" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VEHICULE">
+          <End Role="VEHICULE" Type="Self.VEHICULE" Multiplicity="1" />
+          <End Role="DETAIL_MISSION" Type="Self.DETAIL_MISSION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VEHICULE">
+              <PropertyRef Name="ID_VEHICULE" />
+            </Principal>
+            <Dependent Role="DETAIL_MISSION">
+              <PropertyRef Name="ID_VEHICULE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="RADEETA_DATABASEModelStoreContainer">
+          <EntitySet Name="AGENT" EntityType="Self.AGENT" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BON_CARBURANT" EntityType="Self.BON_CARBURANT" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BON_PLEIN" EntityType="Self.BON_PLEIN" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CARBURANT" EntityType="Self.CARBURANT" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CATEGORIE" EntityType="Self.CATEGORIE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DETAIL_MISSION" EntityType="Self.DETAIL_MISSION" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LOGIN" EntityType="Self.LOGIN" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MISSION" EntityType="Self.MISSION" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MODELE" EntityType="Self.MODELE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PANNE" EntityType="Self.PANNE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PROPRIETAIRE" EntityType="Self.PROPRIETAIRE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="REPARATION" EntityType="Self.REPARATION" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SERVICES" EntityType="Self.SERVICES" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VEHICULE" EntityType="Self.VEHICULE" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__AGENT__ID_SERVIC__48CFD27E" Association="Self.FK__AGENT__ID_SERVIC__48CFD27E">
+            <End Role="SERVICES" EntitySet="SERVICES" />
+            <End Role="AGENT" EntitySet="AGENT" />
+          </AssociationSet>
+          <AssociationSet Name="FK__BON_CARBU__ID_CA__3A81B327" Association="Self.FK__BON_CARBU__ID_CA__3A81B327">
+            <End Role="CARBURANT" EntitySet="CARBURANT" />
+            <End Role="BON_CARBURANT" EntitySet="BON_CARBURANT" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DETAIL_MI__ID_AG__5441852A" Association="Self.FK__DETAIL_MI__ID_AG__5441852A">
+            <End Role="AGENT" EntitySet="AGENT" />
+            <End Role="DETAIL_MISSION" EntitySet="DETAIL_MISSION" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DETAIL_MI__ID_MI__534D60F1" Association="Self.FK__DETAIL_MI__ID_MI__534D60F1">
+            <End Role="MISSION" EntitySet="MISSION" />
+            <End Role="DETAIL_MISSION" EntitySet="DETAIL_MISSION" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DETAIL_MI__ID_VE__5535A963" Association="Self.FK__DETAIL_MI__ID_VE__5535A963">
+            <End Role="VEHICULE" EntitySet="VEHICULE" />
+            <End Role="DETAIL_MISSION" EntitySet="DETAIL_MISSION" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PANNE__ID_VEHICU__59063A47" Association="Self.FK__PANNE__ID_VEHICU__59063A47">
+            <End Role="VEHICULE" EntitySet="VEHICULE" />
+            <End Role="PANNE" EntitySet="PANNE" />
+          </AssociationSet>
+          <AssociationSet Name="FK__REPARATIO__ID_PA__5BE2A6F2" Association="Self.FK__REPARATIO__ID_PA__5BE2A6F2">
+            <End Role="PANNE" EntitySet="PANNE" />
+            <End Role="REPARATION" EntitySet="REPARATION" />
+          </AssociationSet>
+          <AssociationSet Name="FK__VEHICULE__ID_CAR__4D94879B" Association="Self.FK__VEHICULE__ID_CAR__4D94879B">
+            <End Role="CARBURANT" EntitySet="CARBURANT" />
+            <End Role="VEHICULE" EntitySet="VEHICULE" />
+          </AssociationSet>
+          <AssociationSet Name="FK__VEHICULE__ID_CAT__4CA06362" Association="Self.FK__VEHICULE__ID_CAT__4CA06362">
+            <End Role="CATEGORIE" EntitySet="CATEGORIE" />
+            <End Role="VEHICULE" EntitySet="VEHICULE" />
+          </AssociationSet>
+          <AssociationSet Name="FK__VEHICULE__ID_MOD__4BAC3F29" Association="Self.FK__VEHICULE__ID_MOD__4BAC3F29">
+            <End Role="MODELE" EntitySet="MODELE" />
+            <End Role="VEHICULE" EntitySet="VEHICULE" />
+          </AssociationSet>
+          <AssociationSet Name="FK__VEHICULE__ID_PRO__4E88ABD4" Association="Self.FK__VEHICULE__ID_PRO__4E88ABD4">
+            <End Role="PROPRIETAIRE" EntitySet="PROPRIETAIRE" />
+            <End Role="VEHICULE" EntitySet="VEHICULE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BON_PLEIN" Association="Self.FK_BON_PLEIN">
+            <End Role="BON_PLEIN" EntitySet="BON_PLEIN" />
+            <End Role="BON_CARBURANT" EntitySet="BON_CARBURANT" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VEHICULE" Association="Self.FK_VEHICULE">
+            <End Role="VEHICULE" EntitySet="VEHICULE" />
+            <End Role="DETAIL_MISSION" EntitySet="DETAIL_MISSION" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="RADEETA_DATABASEModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="AGENT">
+          <Key>
+            <PropertyRef Name="ID_AGENT" />
+          </Key>
+          <Property Name="ID_AGENT" Type="Int32" Nullable="false" />
+          <Property Name="NOM" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Prenom" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CIN" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TELEPHONE" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="EMAIL" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Date_Ajout" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="TYPE" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="PHOTO" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="ID_SERVICE" Type="Int32" Nullable="false" />
+          <Property Name="ADRESSE" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PASSWORD" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="SERVICE" Relationship="Self.FK__AGENT__ID_SERVIC__48CFD27E" FromRole="AGENT" ToRole="SERVICES" />
+          <NavigationProperty Name="DETAIL_MISSION" Relationship="Self.FK__DETAIL_MI__ID_AG__5441852A" FromRole="AGENT" ToRole="DETAIL_MISSION" />
+        </EntityType>
+        <EntityType Name="BON_PLEIN">
+          <Key>
+            <PropertyRef Name="ID_BON" />
+          </Key>
+          <Property Name="ID_BON" Type="Int32" Nullable="false" />
+          <Property Name="DATE_BON" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="PRIX_LITRE" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="NBR_LITRE" Type="Double" Nullable="false" />
+          <Property Name="KILOMETRAGE" Type="Double" Nullable="false" />
+          <NavigationProperty Name="CARBURANTs" Relationship="Self.BON_CARBURANT" FromRole="BON_PLEIN" ToRole="CARBURANT" />
+        </EntityType>
+        <EntityType Name="CARBURANT">
+          <Key>
+            <PropertyRef Name="ID_CARBURANT" />
+          </Key>
+          <Property Name="ID_CARBURANT" Type="Int32" Nullable="false" />
+          <Property Name="TYPE_CARBURANT" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DATE_ADD_CARBURANT" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="VEHICULEs" Relationship="Self.FK__VEHICULE__ID_CAR__4D94879B" FromRole="CARBURANT" ToRole="VEHICULE" />
+          <NavigationProperty Name="BON_PLEIN" Relationship="Self.BON_CARBURANT" FromRole="CARBURANT" ToRole="BON_PLEIN" />
+        </EntityType>
+        <EntityType Name="CATEGORIE">
+          <Key>
+            <PropertyRef Name="ID_CATEGORIE" />
+          </Key>
+          <Property Name="ID_CATEGORIE" Type="Int32" Nullable="false" />
+          <Property Name="LIB_CATEGORIE" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="VEHICULEs" Relationship="Self.FK__VEHICULE__ID_CAT__4CA06362" FromRole="CATEGORIE" ToRole="VEHICULE" />
+        </EntityType>
+        <EntityType Name="DETAIL_MISSION">
+          <Key>
+            <PropertyRef Name="ID_MISSION" />
+            <PropertyRef Name="ID_AGENT" />
+            <PropertyRef Name="ID_VEHICULE" />
+            <PropertyRef Name="DATE" />
+          </Key>
+          <Property Name="ID_MISSION" Type="Int32" Nullable="false" />
+          <Property Name="ID_AGENT" Type="Int32" Nullable="false" />
+          <Property Name="ID_VEHICULE" Type="Int32" Nullable="false" />
+          <Property Name="DATE" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="AGENT" Relationship="Self.FK__DETAIL_MI__ID_AG__5441852A" FromRole="DETAIL_MISSION" ToRole="AGENT" />
+          <NavigationProperty Name="MISSION" Relationship="Self.FK__DETAIL_MI__ID_MI__534D60F1" FromRole="DETAIL_MISSION" ToRole="MISSION" />
+          <NavigationProperty Name="VEHICULE" Relationship="Self.FK__DETAIL_MI__ID_VE__5535A963" FromRole="DETAIL_MISSION" ToRole="VEHICULE" />
+          <NavigationProperty Name="VEHICULE1" Relationship="Self.FK_VEHICULE" FromRole="DETAIL_MISSION" ToRole="VEHICULE" />
+        </EntityType>
+        <EntityType Name="LOGIN">
+          <Key>
+            <PropertyRef Name="Username" />
+          </Key>
+          <Property Name="Username" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PASS" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MISSION">
+          <Key>
+            <PropertyRef Name="ID_MISSION" />
+          </Key>
+          <Property Name="ID_MISSION" Type="Int32" Nullable="false" />
+          <Property Name="OBJET" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DATE_DEBUT" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="DATE_FIN" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="LIEU" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="DETAIL_MISSION" Relationship="Self.FK__DETAIL_MI__ID_MI__534D60F1" FromRole="MISSION" ToRole="DETAIL_MISSION" />
+        </EntityType>
+        <EntityType Name="MODELE">
+          <Key>
+            <PropertyRef Name="ID_MODELE" />
+          </Key>
+          <Property Name="ID_MODELE" Type="Int32" Nullable="false" />
+          <Property Name="MARQUE" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="LIBELLER_MODEL" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="VEHICULEs" Relationship="Self.FK__VEHICULE__ID_MOD__4BAC3F29" FromRole="MODELE" ToRole="VEHICULE" />
+        </EntityType>
+        <EntityType Name="PANNE">
+          <Key>
+            <PropertyRef Name="ID_PANNE" />
+          </Key>
+          <Property Name="ID_PANNE" Type="Int32" Nullable="false" />
+          <Property Name="DATE_PANNE" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="ID_VEHICULE" Type="Int32" Nullable="false" />
+          <Property Name="DETAIL_PANNE" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="VEHICULE" Relationship="Self.FK__PANNE__ID_VEHICU__59063A47" FromRole="PANNE" ToRole="VEHICULE" />
+          <NavigationProperty Name="REPARATIONs" Relationship="Self.FK__REPARATIO__ID_PA__5BE2A6F2" FromRole="PANNE" ToRole="REPARATION" />
+        </EntityType>
+        <EntityType Name="PROPRIETAIRE">
+          <Key>
+            <PropertyRef Name="ID_PROPRIETAIRE" />
+          </Key>
+          <Property Name="ID_PROPRIETAIRE" Type="Int32" Nullable="false" />
+          <Property Name="INTITULER" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ADRESSE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TELEPHONE" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="EMAIL" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="VEHICULEs" Relationship="Self.FK__VEHICULE__ID_PRO__4E88ABD4" FromRole="PROPRIETAIRE" ToRole="VEHICULE" />
+        </EntityType>
+        <EntityType Name="REPARATION">
+          <Key>
+            <PropertyRef Name="N_REPARATION" />
+          </Key>
+          <Property Name="N_REPARATION" Type="Int32" Nullable="false" />
+          <Property Name="DATE_DEBUT_REPARATION" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="DATE_FIN_REPARATION" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="PRIX" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="PORTER" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ID_PANNE" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="PANNE" Relationship="Self.FK__REPARATIO__ID_PA__5BE2A6F2" FromRole="REPARATION" ToRole="PANNE" />
+        </EntityType>
+        <EntityType Name="SERVICE">
+          <Key>
+            <PropertyRef Name="ID_SERVICE" />
+          </Key>
+          <Property Name="ID_SERVICE" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NOM_SERVICE" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DESCRIPTION" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="AGENTs" Relationship="Self.FK__AGENT__ID_SERVIC__48CFD27E" FromRole="SERVICES" ToRole="AGENT" />
+        </EntityType>
+        <EntityType Name="VEHICULE">
+          <Key>
+            <PropertyRef Name="ID_VEHICULE" />
+          </Key>
+          <Property Name="ID_VEHICULE" Type="Int32" Nullable="false" />
+          <Property Name="IMATRUCULATION" Type="String" MaxLength="40" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MATRICULE" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ID_MODELE" Type="Int32" Nullable="false" />
+          <Property Name="ID_CATEGORIE" Type="Int32" Nullable="false" />
+          <Property Name="ID_CARBURANT" Type="Int32" Nullable="false" />
+          <Property Name="ID_PROPRIETAIRE" Type="Int32" Nullable="false" />
+          <Property Name="DATE_DEBUT" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="CARBURANT" Relationship="Self.FK__VEHICULE__ID_CAR__4D94879B" FromRole="VEHICULE" ToRole="CARBURANT" />
+          <NavigationProperty Name="CATEGORIE" Relationship="Self.FK__VEHICULE__ID_CAT__4CA06362" FromRole="VEHICULE" ToRole="CATEGORIE" />
+          <NavigationProperty Name="DETAIL_MISSION" Relationship="Self.FK__DETAIL_MI__ID_VE__5535A963" FromRole="VEHICULE" ToRole="DETAIL_MISSION" />
+          <NavigationProperty Name="DETAIL_MISSION1" Relationship="Self.FK_VEHICULE" FromRole="VEHICULE" ToRole="DETAIL_MISSION" />
+          <NavigationProperty Name="MODELE" Relationship="Self.FK__VEHICULE__ID_MOD__4BAC3F29" FromRole="VEHICULE" ToRole="MODELE" />
+          <NavigationProperty Name="PANNEs" Relationship="Self.FK__PANNE__ID_VEHICU__59063A47" FromRole="VEHICULE" ToRole="PANNE" />
+          <NavigationProperty Name="PROPRIETAIRE" Relationship="Self.FK__VEHICULE__ID_PRO__4E88ABD4" FromRole="VEHICULE" ToRole="PROPRIETAIRE" />
+        </EntityType>
+        <Association Name="FK__AGENT__ID_SERVIC__48CFD27E">
+          <End Role="SERVICES" Type="Self.SERVICE" Multiplicity="1" />
+          <End Role="AGENT" Type="Self.AGENT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SERVICES">
+              <PropertyRef Name="ID_SERVICE" />
+            </Principal>
+            <Dependent Role="AGENT">
+              <PropertyRef Name="ID_SERVICE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DETAIL_MI__ID_AG__5441852A">
+          <End Role="AGENT" Type="Self.AGENT" Multiplicity="1" />
+          <End Role="DETAIL_MISSION" Type="Self.DETAIL_MISSION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AGENT">
+              <PropertyRef Name="ID_AGENT" />
+            </Principal>
+            <Dependent Role="DETAIL_MISSION">
+              <PropertyRef Name="ID_AGENT" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__VEHICULE__ID_CAR__4D94879B">
+          <End Role="CARBURANT" Type="Self.CARBURANT" Multiplicity="1" />
+          <End Role="VEHICULE" Type="Self.VEHICULE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CARBURANT">
+              <PropertyRef Name="ID_CARBURANT" />
+            </Principal>
+            <Dependent Role="VEHICULE">
+              <PropertyRef Name="ID_CARBURANT" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__VEHICULE__ID_CAT__4CA06362">
+          <End Role="CATEGORIE" Type="Self.CATEGORIE" Multiplicity="1" />
+          <End Role="VEHICULE" Type="Self.VEHICULE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CATEGORIE">
+              <PropertyRef Name="ID_CATEGORIE" />
+            </Principal>
+            <Dependent Role="VEHICULE">
+              <PropertyRef Name="ID_CATEGORIE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DETAIL_MI__ID_MI__534D60F1">
+          <End Role="MISSION" Type="Self.MISSION" Multiplicity="1" />
+          <End Role="DETAIL_MISSION" Type="Self.DETAIL_MISSION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MISSION">
+              <PropertyRef Name="ID_MISSION" />
+            </Principal>
+            <Dependent Role="DETAIL_MISSION">
+              <PropertyRef Name="ID_MISSION" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DETAIL_MI__ID_VE__5535A963">
+          <End Role="VEHICULE" Type="Self.VEHICULE" Multiplicity="1" />
+          <End Role="DETAIL_MISSION" Type="Self.DETAIL_MISSION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VEHICULE">
+              <PropertyRef Name="ID_VEHICULE" />
+            </Principal>
+            <Dependent Role="DETAIL_MISSION">
+              <PropertyRef Name="ID_VEHICULE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VEHICULE">
+          <End Role="VEHICULE" Type="Self.VEHICULE" Multiplicity="1" />
+          <End Role="DETAIL_MISSION" Type="Self.DETAIL_MISSION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VEHICULE">
+              <PropertyRef Name="ID_VEHICULE" />
+            </Principal>
+            <Dependent Role="DETAIL_MISSION">
+              <PropertyRef Name="ID_VEHICULE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__VEHICULE__ID_MOD__4BAC3F29">
+          <End Role="MODELE" Type="Self.MODELE" Multiplicity="1" />
+          <End Role="VEHICULE" Type="Self.VEHICULE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MODELE">
+              <PropertyRef Name="ID_MODELE" />
+            </Principal>
+            <Dependent Role="VEHICULE">
+              <PropertyRef Name="ID_MODELE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PANNE__ID_VEHICU__59063A47">
+          <End Role="VEHICULE" Type="Self.VEHICULE" Multiplicity="1" />
+          <End Role="PANNE" Type="Self.PANNE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VEHICULE">
+              <PropertyRef Name="ID_VEHICULE" />
+            </Principal>
+            <Dependent Role="PANNE">
+              <PropertyRef Name="ID_VEHICULE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__REPARATIO__ID_PA__5BE2A6F2">
+          <End Role="PANNE" Type="Self.PANNE" Multiplicity="1" />
+          <End Role="REPARATION" Type="Self.REPARATION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PANNE">
+              <PropertyRef Name="ID_PANNE" />
+            </Principal>
+            <Dependent Role="REPARATION">
+              <PropertyRef Name="ID_PANNE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__VEHICULE__ID_PRO__4E88ABD4">
+          <End Role="PROPRIETAIRE" Type="Self.PROPRIETAIRE" Multiplicity="1" />
+          <End Role="VEHICULE" Type="Self.VEHICULE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PROPRIETAIRE">
+              <PropertyRef Name="ID_PROPRIETAIRE" />
+            </Principal>
+            <Dependent Role="VEHICULE">
+              <PropertyRef Name="ID_PROPRIETAIRE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="BON_CARBURANT">
+          <End Role="CARBURANT" Type="Self.CARBURANT" Multiplicity="*" />
+          <End Role="BON_PLEIN" Type="Self.BON_PLEIN" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="RADEETA_Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AGENTs" EntityType="Self.AGENT" />
+          <EntitySet Name="BON_PLEIN" EntityType="Self.BON_PLEIN" />
+          <EntitySet Name="CARBURANTs" EntityType="Self.CARBURANT" />
+          <EntitySet Name="CATEGORIEs" EntityType="Self.CATEGORIE" />
+          <EntitySet Name="DETAIL_MISSION" EntityType="Self.DETAIL_MISSION" />
+          <EntitySet Name="LOGINs" EntityType="Self.LOGIN" />
+          <EntitySet Name="MISSIONs" EntityType="Self.MISSION" />
+          <EntitySet Name="MODELEs" EntityType="Self.MODELE" />
+          <EntitySet Name="PANNEs" EntityType="Self.PANNE" />
+          <EntitySet Name="PROPRIETAIREs" EntityType="Self.PROPRIETAIRE" />
+          <EntitySet Name="REPARATIONs" EntityType="Self.REPARATION" />
+          <EntitySet Name="SERVICES" EntityType="Self.SERVICE" />
+          <EntitySet Name="VEHICULEs" EntityType="Self.VEHICULE" />
+          <AssociationSet Name="FK__AGENT__ID_SERVIC__48CFD27E" Association="Self.FK__AGENT__ID_SERVIC__48CFD27E">
+            <End Role="SERVICES" EntitySet="SERVICES" />
+            <End Role="AGENT" EntitySet="AGENTs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DETAIL_MI__ID_AG__5441852A" Association="Self.FK__DETAIL_MI__ID_AG__5441852A">
+            <End Role="AGENT" EntitySet="AGENTs" />
+            <End Role="DETAIL_MISSION" EntitySet="DETAIL_MISSION" />
+          </AssociationSet>
+          <AssociationSet Name="FK__VEHICULE__ID_CAR__4D94879B" Association="Self.FK__VEHICULE__ID_CAR__4D94879B">
+            <End Role="CARBURANT" EntitySet="CARBURANTs" />
+            <End Role="VEHICULE" EntitySet="VEHICULEs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__VEHICULE__ID_CAT__4CA06362" Association="Self.FK__VEHICULE__ID_CAT__4CA06362">
+            <End Role="CATEGORIE" EntitySet="CATEGORIEs" />
+            <End Role="VEHICULE" EntitySet="VEHICULEs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DETAIL_MI__ID_MI__534D60F1" Association="Self.FK__DETAIL_MI__ID_MI__534D60F1">
+            <End Role="MISSION" EntitySet="MISSIONs" />
+            <End Role="DETAIL_MISSION" EntitySet="DETAIL_MISSION" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DETAIL_MI__ID_VE__5535A963" Association="Self.FK__DETAIL_MI__ID_VE__5535A963">
+            <End Role="VEHICULE" EntitySet="VEHICULEs" />
+            <End Role="DETAIL_MISSION" EntitySet="DETAIL_MISSION" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VEHICULE" Association="Self.FK_VEHICULE">
+            <End Role="VEHICULE" EntitySet="VEHICULEs" />
+            <End Role="DETAIL_MISSION" EntitySet="DETAIL_MISSION" />
+          </AssociationSet>
+          <AssociationSet Name="FK__VEHICULE__ID_MOD__4BAC3F29" Association="Self.FK__VEHICULE__ID_MOD__4BAC3F29">
+            <End Role="MODELE" EntitySet="MODELEs" />
+            <End Role="VEHICULE" EntitySet="VEHICULEs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PANNE__ID_VEHICU__59063A47" Association="Self.FK__PANNE__ID_VEHICU__59063A47">
+            <End Role="VEHICULE" EntitySet="VEHICULEs" />
+            <End Role="PANNE" EntitySet="PANNEs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__REPARATIO__ID_PA__5BE2A6F2" Association="Self.FK__REPARATIO__ID_PA__5BE2A6F2">
+            <End Role="PANNE" EntitySet="PANNEs" />
+            <End Role="REPARATION" EntitySet="REPARATIONs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__VEHICULE__ID_PRO__4E88ABD4" Association="Self.FK__VEHICULE__ID_PRO__4E88ABD4">
+            <End Role="PROPRIETAIRE" EntitySet="PROPRIETAIREs" />
+            <End Role="VEHICULE" EntitySet="VEHICULEs" />
+          </AssociationSet>
+          <AssociationSet Name="BON_CARBURANT" Association="Self.BON_CARBURANT">
+            <End Role="CARBURANT" EntitySet="CARBURANTs" />
+            <End Role="BON_PLEIN" EntitySet="BON_PLEIN" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="RADEETA_DATABASEModelStoreContainer" CdmEntityContainer="RADEETA_Entities">
+          <EntitySetMapping Name="AGENTs">
+            <EntityTypeMapping TypeName="RADEETA_DATABASEModel.AGENT">
+              <MappingFragment StoreEntitySet="AGENT">
+                <ScalarProperty Name="ID_AGENT" ColumnName="ID_AGENT" />
+                <ScalarProperty Name="NOM" ColumnName="NOM" />
+                <ScalarProperty Name="Prenom" ColumnName="Prenom" />
+                <ScalarProperty Name="CIN" ColumnName="CIN" />
+                <ScalarProperty Name="TELEPHONE" ColumnName="TELEPHONE" />
+                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+                <ScalarProperty Name="Date_Ajout" ColumnName="Date_Ajout" />
+                <ScalarProperty Name="TYPE" ColumnName="TYPE" />
+                <ScalarProperty Name="PHOTO" ColumnName="PHOTO" />
+                <ScalarProperty Name="ID_SERVICE" ColumnName="ID_SERVICE" />
+                <ScalarProperty Name="ADRESSE" ColumnName="ADRESSE" />
+                <ScalarProperty Name="PASSWORD" ColumnName="PASSWORD" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BON_PLEIN">
+            <EntityTypeMapping TypeName="RADEETA_DATABASEModel.BON_PLEIN">
+              <MappingFragment StoreEntitySet="BON_PLEIN">
+                <ScalarProperty Name="ID_BON" ColumnName="ID_BON" />
+                <ScalarProperty Name="DATE_BON" ColumnName="DATE_BON" />
+                <ScalarProperty Name="PRIX_LITRE" ColumnName="PRIX_LITRE" />
+                <ScalarProperty Name="NBR_LITRE" ColumnName="NBR_LITRE" />
+                <ScalarProperty Name="KILOMETRAGE" ColumnName="KILOMETRAGE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CARBURANTs">
+            <EntityTypeMapping TypeName="RADEETA_DATABASEModel.CARBURANT">
+              <MappingFragment StoreEntitySet="CARBURANT">
+                <ScalarProperty Name="ID_CARBURANT" ColumnName="ID_CARBURANT" />
+                <ScalarProperty Name="TYPE_CARBURANT" ColumnName="TYPE_CARBURANT" />
+                <ScalarProperty Name="DATE_ADD_CARBURANT" ColumnName="DATE_ADD_CARBURANT" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CATEGORIEs">
+            <EntityTypeMapping TypeName="RADEETA_DATABASEModel.CATEGORIE">
+              <MappingFragment StoreEntitySet="CATEGORIE">
+                <ScalarProperty Name="ID_CATEGORIE" ColumnName="ID_CATEGORIE" />
+                <ScalarProperty Name="LIB_CATEGORIE" ColumnName="LIB_CATEGORIE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DETAIL_MISSION">
+            <EntityTypeMapping TypeName="RADEETA_DATABASEModel.DETAIL_MISSION">
+              <MappingFragment StoreEntitySet="DETAIL_MISSION">
+                <ScalarProperty Name="ID_MISSION" ColumnName="ID_MISSION" />
+                <ScalarProperty Name="ID_AGENT" ColumnName="ID_AGENT" />
+                <ScalarProperty Name="ID_VEHICULE" ColumnName="ID_VEHICULE" />
+                <ScalarProperty Name="DATE" ColumnName="DATE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LOGINs">
+            <EntityTypeMapping TypeName="RADEETA_DATABASEModel.LOGIN">
+              <MappingFragment StoreEntitySet="LOGIN">
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="PASS" ColumnName="PASS" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MISSIONs">
+            <EntityTypeMapping TypeName="RADEETA_DATABASEModel.MISSION">
+              <MappingFragment StoreEntitySet="MISSION">
+                <ScalarProperty Name="ID_MISSION" ColumnName="ID_MISSION" />
+                <ScalarProperty Name="OBJET" ColumnName="OBJET" />
+                <ScalarProperty Name="DATE_DEBUT" ColumnName="DATE_DEBUT" />
+                <ScalarProperty Name="DATE_FIN" ColumnName="DATE_FIN" />
+                <ScalarProperty Name="LIEU" ColumnName="LIEU" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MODELEs">
+            <EntityTypeMapping TypeName="RADEETA_DATABASEModel.MODELE">
+              <MappingFragment StoreEntitySet="MODELE">
+                <ScalarProperty Name="ID_MODELE" ColumnName="ID_MODELE" />
+                <ScalarProperty Name="MARQUE" ColumnName="MARQUE" />
+                <ScalarProperty Name="LIBELLER_MODEL" ColumnName="LIBELLER_MODEL" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PANNEs">
+            <EntityTypeMapping TypeName="RADEETA_DATABASEModel.PANNE">
+              <MappingFragment StoreEntitySet="PANNE">
+                <ScalarProperty Name="ID_PANNE" ColumnName="ID_PANNE" />
+                <ScalarProperty Name="DATE_PANNE" ColumnName="DATE_PANNE" />
+                <ScalarProperty Name="ID_VEHICULE" ColumnName="ID_VEHICULE" />
+                <ScalarProperty Name="DETAIL_PANNE" ColumnName="DETAIL_PANNE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PROPRIETAIREs">
+            <EntityTypeMapping TypeName="RADEETA_DATABASEModel.PROPRIETAIRE">
+              <MappingFragment StoreEntitySet="PROPRIETAIRE">
+                <ScalarProperty Name="ID_PROPRIETAIRE" ColumnName="ID_PROPRIETAIRE" />
+                <ScalarProperty Name="INTITULER" ColumnName="INTITULER" />
+                <ScalarProperty Name="ADRESSE" ColumnName="ADRESSE" />
+                <ScalarProperty Name="TELEPHONE" ColumnName="TELEPHONE" />
+                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="REPARATIONs">
+            <EntityTypeMapping TypeName="RADEETA_DATABASEModel.REPARATION">
+              <MappingFragment StoreEntitySet="REPARATION">
+                <ScalarProperty Name="N_REPARATION" ColumnName="N_REPARATION" />
+                <ScalarProperty Name="DATE_DEBUT_REPARATION" ColumnName="DATE_DEBUT_REPARATION" />
+                <ScalarProperty Name="DATE_FIN_REPARATION" ColumnName="DATE_FIN_REPARATION" />
+                <ScalarProperty Name="PRIX" ColumnName="PRIX" />
+                <ScalarProperty Name="PORTER" ColumnName="PORTER" />
+                <ScalarProperty Name="ID_PANNE" ColumnName="ID_PANNE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SERVICES">
+            <EntityTypeMapping TypeName="RADEETA_DATABASEModel.SERVICE">
+              <MappingFragment StoreEntitySet="SERVICES">
+                <ScalarProperty Name="ID_SERVICE" ColumnName="ID_SERVICE" />
+                <ScalarProperty Name="NOM_SERVICE" ColumnName="NOM_SERVICE" />
+                <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VEHICULEs">
+            <EntityTypeMapping TypeName="RADEETA_DATABASEModel.VEHICULE">
+              <MappingFragment StoreEntitySet="VEHICULE">
+                <ScalarProperty Name="ID_VEHICULE" ColumnName="ID_VEHICULE" />
+                <ScalarProperty Name="IMATRUCULATION" ColumnName="IMATRUCULATION" />
+                <ScalarProperty Name="MATRICULE" ColumnName="MATRICULE" />
+                <ScalarProperty Name="ID_MODELE" ColumnName="ID_MODELE" />
+                <ScalarProperty Name="ID_CATEGORIE" ColumnName="ID_CATEGORIE" />
+                <ScalarProperty Name="ID_CARBURANT" ColumnName="ID_CARBURANT" />
+                <ScalarProperty Name="ID_PROPRIETAIRE" ColumnName="ID_PROPRIETAIRE" />
+                <ScalarProperty Name="DATE_DEBUT" ColumnName="DATE_DEBUT" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="BON_CARBURANT" TypeName="RADEETA_DATABASEModel.BON_CARBURANT" StoreEntitySet="BON_CARBURANT">
+            <EndProperty Name="CARBURANT">
+              <ScalarProperty Name="ID_CARBURANT" ColumnName="ID_CARBURANT" />
+            </EndProperty>
+            <EndProperty Name="BON_PLEIN">
+              <ScalarProperty Name="ID_BON" ColumnName="ID_BON" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
