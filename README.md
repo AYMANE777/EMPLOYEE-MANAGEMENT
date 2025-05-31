@@ -43,14 +43,14 @@
 <table>
   <thead><tr><th>Entity</th><th>Description</th></tr></thead>
   <tbody>
-    <tr><td><code>AGENT.cs</code></td><td>Stores employee/agent data</td></tr>
-    <tr><td><code>MISSION.cs</code></td><td>Represents assignments linked to agents and vehicles</td></tr>
-    <tr><td><code>BON_PLEIN.cs</code></td><td>Logs of fuel consumption per mission</td></tr>
-    <tr><td><code>VEHICULE.cs</code></td><td>Vehicle registration and tracking</td></tr>
-    <tr><td><code>REPARATION.cs</code></td><td>Vehicle repair records</td></tr>
-    <tr><td><code>PANNE.cs</code></td><td>Breakdown logs</td></tr>
-    <tr><td><code>PROPRIETAIRE.cs</code></td><td>Vehicle ownership information</td></tr>
-    <tr><td><code>LOGIN.cs</code></td><td>User credentials and authentication logic</td></tr>
+    <tr><td><code>AGENT</code></td><td>Stores employee/agent data</td></tr>
+    <tr><td><code>MISSION</code></td><td>Represents assignments linked to agents and vehicles</td></tr>
+    <tr><td><code>BON_PLEIN</code></td><td>Logs of fuel consumption per mission</td></tr>
+    <tr><td><code>VEHICULE</code></td><td>Vehicle registration and tracking</td></tr>
+    <tr><td><code>REPARATION</code></td><td>Vehicle repair records</td></tr>
+    <tr><td><code>PANNE</code></td><td>Breakdown logs</td></tr>
+    <tr><td><code>PROPRIETAIRE</code></td><td>Vehicle ownership information</td></tr>
+    <tr><td><code>LOGIN</code></td><td>User credentials and authentication logic</td></tr>
   </tbody>
 </table>
 
