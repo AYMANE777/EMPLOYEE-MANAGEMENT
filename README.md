@@ -32,7 +32,7 @@
   <li>👨‍💼 <strong>Agent Management:</strong> Track employee records, job roles, and mission assignments</li>
   <li>🚗 <strong>Vehicle Tracking:</strong> Manage fleet data including models, owners, and categories</li>
   <li>🗺️ <strong>Mission Management:</strong> Assign and detail missions for agents and vehicles</li>
-  <li>⛽ <strong>Fuel Management:</strong> BON_PLEIN for fuel logs linked to vehicles and missions</li>
+  <li>⛽ <strong>Fuel Management:</strong> BON PLEIN for fuel logs linked to vehicles and missions</li>
   <li>⚙️ <strong>Maintenance:</strong> Record repairs, breakdowns (PANNE), and associated services</li>
   <li>🔐 <strong>Authentication:</strong> LOGIN.cs for secure user access control</li>
 </ul>
@@ -45,7 +45,7 @@
   <tbody>
     <tr><td><code>AGENT</code></td><td>Stores employee/agent data</td></tr>
     <tr><td><code>MISSION</code></td><td>Represents assignments linked to agents and vehicles</td></tr>
-    <tr><td><code>BON_PLEIN</code></td><td>Logs of fuel consumption per mission</td></tr>
+    <tr><td><code>BON PLEIN</code></td><td>Logs of fuel consumption per mission</td></tr>
     <tr><td><code>VEHICULE</code></td><td>Vehicle registration and tracking</td></tr>
     <tr><td><code>REPARATION</code></td><td>Vehicle repair records</td></tr>
     <tr><td><code>PANNE</code></td><td>Breakdown logs</td></tr>
