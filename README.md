@@ -14,7 +14,7 @@
 ---
 
 <h2>🔍 Overview</h2>
-<p><strong>EMPLOYEE-MANAGEMENT-ASPNET</strong> is an ASP.NET web application developed using C# and Entity Framework. It is designed to manage employees (agents), vehicle assignments, fuel logs, and mission tracking in a corporate or governmental environment.</p>
+<p><strong>EMPLOYEE-MANAGEMENT</strong> is an ASP.NET web application developed using C# and Entity Framework. It is designed to manage employees (agents), vehicle assignments, fuel logs, and mission tracking in a corporate or governmental environment.</p>
 
 <h3>💡 Core Objectives:</h3>
 <ul>
